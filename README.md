@@ -6,10 +6,26 @@ The software provides a modular **Semantic SLAM system** for estimating a drone�
 
 It has been developed within **Work Package 2: Aerial Drone Development**, specifically under **Task T2.5: Semantic SLAM**, led by the **Computer Vision and Aerial Robotics group (CVAR)** at **Universidad Politécnica de Madrid**, with contributions from the **Paderborn University** and **SINTEF**.
 
+## ⚙️ Overview
+
+Within SHEREC, this module provides the **drift-corrected localization and semantic mapping** layer that the drone relies on while inspecting a ship's interior. It is implemented as a ROS 2 node (Aerostack2) and runs **online and onboard** on the drone's embedded computer.
+
 <p align="center">
-  <img src="figures/semantic_slam_diagram.png" alt="Semantic SLAM diagram" width="100%">
+  <img src="figures/semantic_slam_diagram.png" alt="Semantic SLAM diagram" width="80%">
 </p>
 
+It fuses two kinds of information in a **dual pose-graph** (built on `g2o`):
+
+- **Odometry** — from any source published as `nav_msgs/Odometry` (e.g. LiDAR-inertial odometry or VIO), providing the high-frequency relative motion estimate.
+- **Semantic detections** — *structural elements* (walls, rooms) from the LiDAR structural detector and *objects* (doors, cabinets, pipes, equipment) from the RGB-D visual object detector (Task T2.4). These are received as detection messages and used as landmark constraints.
+
+The pipeline works as follows:
+
+1. Between main-graph keyframes, a **temporary graph** accumulates the high-frequency detections of each landmark.
+2. On each new keyframe, the temporary graph is optimized and the multiple observations of every landmark are **distilled into a single refined constraint**, which is promoted to the long-lived **main graph** (re-observing a known landmark acts as an implicit loop closure). This keeps the graph compact while preserving detection information.
+3. From the optimized trajectory, the node computes and continuously broadcasts the **`map` → `odom` transform** to the TF tree, so every other module in the stack receives a globally consistent, drift-corrected pose.
+
+**Outputs for the project:** the drift-corrected pose used by navigation, a semantically enriched map of the ship interior, and the recorded LiDAR point-cloud map that is passed to **WP6** as input for generating the Ship Recycling Plan (SRP).
 
 ## 🔗 Related Repositories
 
