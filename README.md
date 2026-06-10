@@ -6,6 +6,10 @@ The software provides a modular **Semantic SLAM system** for estimating a drone�
 
 It has been developed within **Work Package 2: Aerial Drone Development**, specifically under **Task T2.5: Semantic SLAM**, led by the **Computer Vision and Aerial Robotics group (CVAR)** at **Universidad Politécnica de Madrid**, with contributions from the **Paderborn University** and **SINTEF**.
 
+<p align="center">
+  <img src="figures/semantic_slam_diagram.png" alt="Semantic SLAM diagram" width="100%">
+</p>
+
 
 ## 🔗 Related Repositories
 
