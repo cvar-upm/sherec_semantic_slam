@@ -31,9 +31,11 @@ The pipeline works as follows:
 
 The system can be tested using the provided Docker setup, which runs the full pipeline — the [Semantic SLAM architecture](https://github.com/perezsaura-david/dps_slam) together with the [lidar-based structural detection](https://gitlab.com/cvar-upm/release/lidar-bev-structural-detector) — inside a self-contained image.
 
+The integration of the visual object detection front-end will be included in the future.
+
 See [`docker/README.md`](docker/README.md) for the step-by-step instructions (building the image and launching the pipeline).
 
-> 📂 **Datasets:** sample datasets for testing the pipeline will be made available soon _(link coming soon)_.
+> 📂 **Datasets:** sample datasets for testing the pipeline will be made available soon.
 
 ## 🔗 Related Repositories
 
@@ -42,7 +44,7 @@ See [`docker/README.md`](docker/README.md) for the step-by-step instructions (bu
 - **LiDAR-BEV Structural Detector**  
   https://gitlab.com/cvar-upm/release/lidar-bev-structural-detector
 - **General Visual Object Detector and Pose Estimator**  
-  (Integration of visual object detection front-end will be included in the future)
+  (Under development)
 - **Flight-ready Drift-Aware LiDAR-Intertial Odometry and Mapping with Self-correcting Maps**  
   https://github.com/alvgaona/fr-lio
   
