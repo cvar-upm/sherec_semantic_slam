@@ -1,0 +1,24 @@
+name: sherec_semantic_slam
+root: ./
+startup_window: slam
+pre_window: |
+  export NAMESPACE=drone0;
+  export ROSBAG_FILE=/root/rosbags/demo_rosbag
+  export ROSBAG_RATE=1.0;
+  export CONFIG_FILE=/root/launchers/config.yaml
+  export USE_SIM_TIME=true
+windows:
+  - slam:
+      layout: tiled
+      panes:
+        - ros2 launch dps_slam dps_slam.launch.py namespace:=$NAMESPACE use_sim_time:=$USE_SIM_TIME config_file:=$CONFIG_FILE
+        - ros2 run tf2_ros static_transform_publisher --x 0 --y 0 --z 0 --roll 0 --pitch 0 --yaw 0.0 --frame-id $NAMESPACE/base_link --child-frame-id livox_frame --ros-args -p use_sim_time:=$USE_SIM_TIME
+  - detections:
+      layout: tiled
+      panes:
+        - ros2 launch sslam_tools divided_launch.py
+  - rosbag:
+      layout: tiled
+      panes:
+        - rviz2 -d ./rviz.rviz
+        - ros2 bag play $ROSBAG_FILE --start-offset 0.0 -r $ROSBAG_RATE

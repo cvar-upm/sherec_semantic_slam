@@ -1,0 +1,35 @@
+name: sherec_semantic_slam
+
+services:
+  sherec_semantic_slam:
+    image: sherec_semantic_slam
+    build:
+      context: .
+      dockerfile: dockerfile
+      ssh:
+        - default
+    container_name: sherec_semantic_slam
+    environment:
+      DISPLAY: $DISPLAY
+      XAUTHORITY: $XAUTHORITY
+      SSH_AUTH_SOCK: $SSH_AUTH_SOCK
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: all
+      TERM: $TERM
+      SHELL: $SHELL
+    # Requires the NVIDIA Container Toolkit. 
+    # Drop `runtime: nvidia` if you don't have an NVIDIA GPU.
+    runtime: nvidia
+    privileged: true
+    restart: "no"
+    volumes:
+      # --- display (X11) ---
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - $XAUTHORITY:$XAUTHORITY:rw
+      # --- ssh agent (git inside the container) ---
+      - $SSH_AUTH_SOCK:$SSH_AUTH_SOCK
+      # --- working dirs ---
+      - ${LAUNCHERS_DIR:-./launchers}:/root/launchers/:rw
+      - ${ROSBAGS_DIR:-./rosbags}:/root/rosbags/:rw
+    network_mode: "host"
+    command: tail -f /dev/null

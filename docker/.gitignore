@@ -1,0 +1,15 @@
+# local Claude project data
+/.claude/
+
+# rosbag data (large — supply your own, mounted at /root/rosbags)
+/rosbags/*
+!/rosbags/.gitkeep
+
+# SLAM run outputs
+/launchers/slam_*.csv
+
+# editor / OS cruft
+*.swp
+*~
+.DS_Store
+.vscode/
