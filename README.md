@@ -27,6 +27,14 @@ The pipeline works as follows:
 
 **Outputs for the project:** the drift-corrected pose used by navigation, a semantically enriched map of the ship interior, and the recorded LiDAR point-cloud map that is passed to **WP6** as input for generating the Ship Recycling Plan (SRP).
 
+## 🚀 Usage
+
+The system can be tested using the provided Docker setup, which runs the full pipeline — the **Semantic SLAM back-end** (`dps_slam`) together with the **structural detection front-end** — inside a self-contained image.
+
+See [`docker/README.md`](docker/README.md) for the step-by-step instructions (building the image and launching the pipeline).
+
+> 📂 **Datasets:** sample datasets for testing the pipeline will be made available soon _(link coming soon)_.
+
 ## 🔗 Related Repositories
 
 - **SLAM Architecture (DPS-SLAM)**  
