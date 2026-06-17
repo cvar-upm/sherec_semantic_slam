@@ -51,6 +51,8 @@ See [`docker/README.md`](docker/README.md) for the step-by-step instructions (bu
 
 ## 📖 Papers <a id="published-papers"></a>
 
+The research and development carried out within this task has led to the following publications:
+
 <details>
 <summary><a href="https://arxiv.org/abs/2604.15168">
 Dual Pose-Graph Semantic Localization for Vision-Based Autonomous Drone Racing
