@@ -29,7 +29,7 @@ The pipeline works as follows:
 
 ## 🚀 Usage
 
-The system can be tested using the provided Docker setup, which runs the full pipeline — the **Semantic SLAM back-end** (`dps_slam`) together with the **structural detection front-end** — inside a self-contained image.
+The system can be tested using the provided Docker setup, which runs the full pipeline — the [Semantic SLAM architecture](https://github.com/perezsaura-david/dps_slam) together with the [lidar-based structural detection](https://gitlab.com/cvar-upm/release/lidar-bev-structural-detector) — inside a self-contained image.
 
 See [`docker/README.md`](docker/README.md) for the step-by-step instructions (building the image and launching the pipeline).
 
@@ -42,7 +42,7 @@ See [`docker/README.md`](docker/README.md) for the step-by-step instructions (bu
 - **LiDAR-BEV Structural Detector**  
   https://gitlab.com/cvar-upm/release/lidar-bev-structural-detector
 - **General Visual Object Detector and Pose Estimator**  
-  PLACEHOLDER
+  (Integration of visual object detection front-end will be included in the future)
 - **Flight-ready Drift-Aware LiDAR-Intertial Odometry and Mapping with Self-correcting Maps**  
   https://github.com/alvgaona/fr-lio
   

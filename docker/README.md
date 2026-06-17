@@ -1,9 +1,10 @@
 # sherec_semantic_slam (docker)
 
-Docker image for [**DPS-SLAM**](https://github.com/perezsaura-david/dps_slam) (Dual Pose-graph
-Semantic SLAM for AeroStack2). The image is **self-contained**: the dockerfile clones and builds the
-whole colcon workspace — `dps_slam`, `dps_slam_msgs`, and `struct_slam` — so there's nothing to build
-by hand. You just bring it up and run an experiment.
+Docker image for the Semantic SLAM system that includes the
+[**Dual Pose-graph Semantic SLAM**](https://github.com/perezsaura-david/dps_slam) back-end and the
+[**LiDAR-BEV Structural Detector**](https://gitlab.com/cvar-upm/release/lidar-bev-structural-detector)
+front-end. The dockerfile clones and builds the complete colcon workspace, producing a
+self-contained image that requires no manual setup before running an experiment.
 
 The image is ROS 2 Humble + Gazebo Harmonic and installs g2o/ceres from apt
 (`ros-humble-libg2o`, `libceres-dev`, `libsuitesparse-dev`, `libgoogle-glog-dev`).
